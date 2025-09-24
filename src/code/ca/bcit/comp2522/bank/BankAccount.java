@@ -24,11 +24,11 @@ class BankAccount
     private static final int MAX_ACCOUNT_NUMBER_LENGTH = 7;
 
     private final BankClient client;
-    private final String accountNumber;
-    private final Date accountOpened;
-    private final Date accountClosed;
-    private final int pin;
-    private double balance;
+    private final String     accountNumber;
+    private final Date       accountOpened;
+    private final Date       accountClosed;
+    private final int        pin;
+    private       double     balance;
 
     /**
      * Constructs a {@code BankAccount} with the specified details.
@@ -49,12 +49,13 @@ class BankAccount
                        final int pin)
     {
         validateAccount(client, accountNumber, accountOpened, initialBalance);
-        this.client = client;
+
+        this.client        = client;
         this.accountNumber = accountNumber;
         this.accountOpened = accountOpened;
         this.accountClosed = accountClosed;
-        this.balance = initialBalance;
-        this.pin = pin;
+        this.balance       = initialBalance;
+        this.pin           = pin;
     }
 
     /**
@@ -75,15 +76,17 @@ class BankAccount
         {
             throw new IllegalArgumentException("Client cannot be null");
         }
+
         if (accountNumber == null || accountNumber.trim().isEmpty())
         {
             throw new IllegalArgumentException("Account number cannot be null or blank");
         }
-        if (accountNumber.length() < MIN_ACCOUNT_NUMBER_LENGTH || accountNumber.length() > MAX_ACCOUNT_NUMBER_LENGTH)
+        else if (accountNumber.length() < MIN_ACCOUNT_NUMBER_LENGTH || accountNumber.length() > MAX_ACCOUNT_NUMBER_LENGTH)
         {
             throw new IllegalArgumentException("Account number must be " + MIN_ACCOUNT_NUMBER_LENGTH + " or " +
-                    MAX_ACCOUNT_NUMBER_LENGTH + " characters");
+                                               MAX_ACCOUNT_NUMBER_LENGTH + " characters");
         }
+
         if (accountOpened == null)
         {
             throw new IllegalArgumentException("Account opened date cannot be null");
@@ -158,10 +161,12 @@ class BankAccount
         {
             throw new IllegalArgumentException("Withdrawal amount must be positive");
         }
+
         if (amountUsd > balance)
         {
             throw new IllegalArgumentException("Insufficient funds");
         }
+
         if (accountClosed != null)
         {
             throw new IllegalArgumentException("Cannot withdraw from a closed account");
@@ -221,37 +226,41 @@ class BankAccount
      */
     public String getDetails()
     {
-        String openedDateFormatted;
+        final String openedDateFormatted;
+        final String closedDateFormatted;
+        final String detailsFormatted;
+
         openedDateFormatted = String.format("%s %s %d, %d",
-                accountOpened.getDayOfTheWeek(),
-                accountOpened.getMonthName(),
-                accountOpened.getDay(),
-                accountOpened.getYear()
-        );
+                                            accountOpened.getDayOfTheWeek(),
+                                            accountOpened.getMonthName(),
+                                            accountOpened.getDay(),
+                                            accountOpened.getYear()
+                                           );
 
         String clientName = client.getName().getFullName();
 
-        String closedDateFormatted;
         if (accountClosed != null)
         {
             closedDateFormatted = String.format("closed %s %s %d, %d",
-                    accountClosed.getDayOfTheWeek(),
-                    accountClosed.getMonthName(),
-                    accountClosed.getDay(),
-                    accountClosed.getYear()
-            );
+                                                accountClosed.getDayOfTheWeek(),
+                                                accountClosed.getMonthName(),
+                                                accountClosed.getDay(),
+                                                accountClosed.getYear()
+                                               );
         }
         else
         {
             closedDateFormatted = "is still open.";
         }
 
-        return String.format("%s had $%.0f USD in account #%s which they opened on %s and %s.",
-                clientName,
-                balance,
-                accountNumber,
-                openedDateFormatted,
-                closedDateFormatted
-        );
+        detailsFormatted = String.format("%s had $%.0f USD in account #%s which they opened on %s and %s.",
+                                         clientName,
+                                         balance,
+                                         accountNumber,
+                                         openedDateFormatted,
+                                         closedDateFormatted
+                                        );
+
+        return detailsFormatted;
     }
 }

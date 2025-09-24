@@ -19,97 +19,98 @@ package ca.bcit.comp2522.bank;
 public class Date
 {
     private static final int CURRENT_YEAR = 2025;
-    private static final int YEAR_1800 = 1800;
-    private static final int YEAR_1900 = 1900;
-    private static final int YEAR_2000 = 2000;
+    private static final int YEAR_1800    = 1800;
+    private static final int YEAR_1900    = 1900;
+    private static final int YEAR_2000    = 2000;
 
     // --- Constants for months ---
     private static final int MONTHS_IN_YEAR = 12;
-    private static final int JANUARY = 1;
-    private static final int FEBRUARY = 2;
-    private static final int MARCH = 3;
-    private static final int APRIL = 4;
-    private static final int MAY = 5;
-    private static final int JUNE = 6;
-    private static final int JULY = 7;
-    private static final int AUGUST = 8;
-    private static final int SEPTEMBER = 9;
-    private static final int OCTOBER = 10;
-    private static final int NOVEMBER = 11;
-    private static final int DECEMBER = 12;
+    private static final int JANUARY        = 1;
+    private static final int FEBRUARY       = 2;
+    private static final int MARCH          = 3;
+    private static final int APRIL          = 4;
+    private static final int MAY            = 5;
+    private static final int JUNE           = 6;
+    private static final int JULY           = 7;
+    private static final int AUGUST         = 8;
+    private static final int SEPTEMBER      = 9;
+    private static final int OCTOBER        = 10;
+    private static final int NOVEMBER       = 11;
+    private static final int DECEMBER       = 12;
 
     // --- Constants for month codes ---
-    private static final int JANUARY_CODE = 1;
-    private static final int FEBRUARY_CODE = 4;
-    private static final int MARCH_CODE = 4;
-    private static final int APRIL_CODE = 0;
-    private static final int MAY_CODE = 2;
-    private static final int JUNE_CODE = 5;
-    private static final int JULY_CODE = 0;
-    private static final int AUGUST_CODE = 3;
+    private static final int JANUARY_CODE   = 1;
+    private static final int FEBRUARY_CODE  = 4;
+    private static final int MARCH_CODE     = 4;
+    private static final int APRIL_CODE     = 0;
+    private static final int MAY_CODE       = 2;
+    private static final int JUNE_CODE      = 5;
+    private static final int JULY_CODE      = 0;
+    private static final int AUGUST_CODE    = 3;
     private static final int SEPTEMBER_CODE = 6;
-    private static final int OCTOBER_CODE = 1;
-    private static final int NOVEMBER_CODE = 4;
-    private static final int DECEMBER_CODE = 6;
+    private static final int OCTOBER_CODE   = 1;
+    private static final int NOVEMBER_CODE  = 4;
+    private static final int DECEMBER_CODE  = 6;
 
     // --- Constants for month names ---
-    private static final String JANUARY_STRING = "January";
-    private static final String FEBRUARY_STRING = "February";
-    private static final String MARCH_STRING = "March";
-    private static final String APRIL_STRING = "April";
-    private static final String MAY_STRING = "May";
-    private static final String JUNE_STRING = "June";
-    private static final String JULY_STRING = "July";
-    private static final String AUGUST_STRING = "August";
+    private static final String JANUARY_STRING   = "January";
+    private static final String FEBRUARY_STRING  = "February";
+    private static final String MARCH_STRING     = "March";
+    private static final String APRIL_STRING     = "April";
+    private static final String MAY_STRING       = "May";
+    private static final String JUNE_STRING      = "June";
+    private static final String JULY_STRING      = "July";
+    private static final String AUGUST_STRING    = "August";
     private static final String SEPTEMBER_STRING = "September";
-    private static final String OCTOBER_STRING = "October";
-    private static final String NOVEMBER_STRING = "November";
-    private static final String DECEMBER_STRING = "December";
+    private static final String OCTOBER_STRING   = "October";
+    private static final String NOVEMBER_STRING  = "November";
+    private static final String DECEMBER_STRING  = "December";
 
     // --- Constants for day codes ---
-    private static final int SATURDAY_CODE = 0;
-    private static final int SUNDAY_CODE = 1;
-    private static final int MONDAY_CODE = 2;
-    private static final int TUESDAY_CODE = 3;
+    private static final int SATURDAY_CODE  = 0;
+    private static final int SUNDAY_CODE    = 1;
+    private static final int MONDAY_CODE    = 2;
+    private static final int TUESDAY_CODE   = 3;
     private static final int WEDNESDAY_CODE = 4;
-    private static final int THURSDAY_CODE = 5;
+    private static final int THURSDAY_CODE  = 5;
+    private static final int FRIDAY_CODE    = 6;
 
     // --- Constants for day names ---
-    private static final String SATURDAY_STRING = "Saturday";
-    private static final String SUNDAY_STRING = "Sunday";
-    private static final String MONDAY_STRING = "Monday";
-    private static final String TUESDAY_STRING = "Tuesday";
+    private static final String SATURDAY_STRING  = "Saturday";
+    private static final String SUNDAY_STRING    = "Sunday";
+    private static final String MONDAY_STRING    = "Monday";
+    private static final String TUESDAY_STRING   = "Tuesday";
     private static final String WEDNESDAY_STRING = "Wednesday";
-    private static final String THURSDAY_STRING = "Thursday";
-    private static final String FRIDAY_STRING = "Friday";
+    private static final String THURSDAY_STRING  = "Thursday";
+    private static final String FRIDAY_STRING    = "Friday";
 
     // --- Constants for days in months ---
-    private static final int LEAP_FEBRUARY_DAYS = 29;
+    private static final int LEAP_FEBRUARY_DAYS    = 29;
     private static final int REGULAR_FEBRUARY_DAYS = 28;
-    private static final int LONG_MONTH = 31;
-    private static final int SHORT_MONTH = 30;
+    private static final int LONG_MONTH            = 31;
+    private static final int SHORT_MONTH           = 30;
 
     // --- Leap year divisors ---
-    private static final int LEAP_YEAR_DIVISOR = 4;
-    private static final int CENTURY_DIVISOR = 100;
+    private static final int LEAP_YEAR_DIVISOR        = 4;
+    private static final int CENTURY_DIVISOR          = 100;
     private static final int QUADRICENTENNIAL_DIVISOR = 400;
 
     // --- Offsets and values for weekday calculation ---
     private static final int DAY_SUMMATION_START_VALUE = 0;
-    private static final int YEAR_2000_OFFSET = 6;
-    private static final int YEAR_1800_OFFSET = 2;
-    private static final int JAN_FEB_LEAP_OFFSET = 6;
-    private static final int FOUR_DIVISOR = 4;
-    private static final int NUM_WEEK_DAYS = 7;
+    private static final int YEAR_2000_OFFSET          = 6;
+    private static final int YEAR_1800_OFFSET          = 2;
+    private static final int JAN_FEB_LEAP_OFFSET       = 6;
+    private static final int FOUR_DIVISOR              = 4;
+    private static final int NUM_WEEK_DAYS             = 7;
 
     // --- Minimum valid values ---
-    private static final int MIN_DAY = 1;
+    private static final int MIN_DAY  = 1;
     private static final int MIN_YEAR = YEAR_1800;
 
     // --- Constants for remainder ---
-    private static final int EVEN_DIVISOR = 2;
+    private static final int EVEN_DIVISOR  = 2;
     private static final int HAS_REMAINDER = 1;
-    private static final int NO_REMAINDER = 0;
+    private static final int NO_REMAINDER  = 0;
 
     private final int year;
     private final int month;
@@ -129,9 +130,9 @@ public class Date
     {
         validateDate(year, month, day);
 
-        this.year = year;
+        this.year  = year;
         this.month = month;
-        this.day = day;
+        this.day   = day;
     }
 
     /**
@@ -246,7 +247,14 @@ public class Date
         {
             return NOVEMBER_STRING;
         }
-        return DECEMBER_STRING;
+        else if (month == DECEMBER)
+        {
+            return DECEMBER_STRING;
+        }
+        else
+        {
+            throw new IllegalArgumentException("Month is not valid");
+        }
     }
 
     /**
@@ -256,8 +264,14 @@ public class Date
      * @param month the month to evaluate
      * @return the number of days in the specified month
      */
-    private static int getDaysInMonth(final int year, final int month)
+    private static int getDaysInMonth(final int year,
+                                      final int month)
     {
+        if (month < JANUARY || month > DECEMBER)
+        {
+            throw new IllegalArgumentException("Month is not between " + JANUARY + " and " + DECEMBER);
+        }
+
         if (month == FEBRUARY)
         {
             if (isLeapYear(year))
@@ -267,12 +281,14 @@ public class Date
             return REGULAR_FEBRUARY_DAYS;
         }
 
-        if (month < AUGUST && month % EVEN_DIVISOR == HAS_REMAINDER)
+        if (month < AUGUST &&
+            month % EVEN_DIVISOR == HAS_REMAINDER)
         {
             return LONG_MONTH;
         }
 
-        if (month >= AUGUST && month % EVEN_DIVISOR == NO_REMAINDER)
+        if (month >= AUGUST &&
+            month % EVEN_DIVISOR == NO_REMAINDER)
         {
             return LONG_MONTH;
         }
@@ -335,7 +351,14 @@ public class Date
         {
             return NOVEMBER_CODE;
         }
-        return DECEMBER_CODE;
+        else if (month == DECEMBER)
+        {
+            return DECEMBER_CODE;
+        }
+        else
+        {
+            throw new IllegalArgumentException("Month is not valid");
+        }
     }
 
     /**
@@ -374,7 +397,14 @@ public class Date
         {
             return THURSDAY_STRING;
         }
-        return FRIDAY_STRING;
+        else if (dayCode == FRIDAY_CODE)
+        {
+            return FRIDAY_STRING;
+        }
+        else
+        {
+            throw new IllegalArgumentException("Day is not valid");
+        }
     }
 
     /**
@@ -427,9 +457,11 @@ public class Date
      *
      * <p>
      * Extra notes:
-     * a) for January/February dates in leap years, add 6 at the start
-     * b) for all dates in the 2000s, add 6 at the start
-     * c) for all dates in the 1800s, add 2 at the start
+     * <ul>
+     *      <li>for January/February dates in leap years, add 6 at the start</li>
+     *      <li>for all dates in the 2000s, add 6 at the start</li>
+     *      <li>for all dates in the 1800s, add 2 at the start</li>
+     * </ul>
      * </p>
      *
      * @return the name of the day of the week (e.g., "Monday")
@@ -462,7 +494,7 @@ public class Date
 
         lastTwoDigitsOfYear = year % CENTURY_DIVISOR;
 
-        numTwelves = lastTwoDigitsOfYear % MONTHS_IN_YEAR;
+        numTwelves = lastTwoDigitsOfYear / MONTHS_IN_YEAR;
         dayFromSummation += numTwelves;
 
         numTwelvesRemainder = lastTwoDigitsOfYear - MONTHS_IN_YEAR * numTwelves;

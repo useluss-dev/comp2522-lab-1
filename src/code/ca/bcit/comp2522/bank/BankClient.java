@@ -27,12 +27,12 @@ class BankClient
 
     // --- Constants for client status ---
     private static final String ALIVE_STRING = "alive";
-    private static final String DEAD_STRING = "not alive";
+    private static final String DEAD_STRING  = "not alive";
 
-    private final Name name;
-    private final Date birthDate;
-    private final Date deathDate;
-    private final Date signupDate;
+    private final Name   name;
+    private final Date   birthDate;
+    private final Date   deathDate;
+    private final Date   signupDate;
     private final String clientID;
 
     /**
@@ -52,11 +52,12 @@ class BankClient
                       final String clientID)
     {
         validateClientID(name, birthDate, signupDate, clientID);
-        this.name = name;
-        this.birthDate = birthDate;
-        this.deathDate = deathDate;
+
+        this.name       = name;
+        this.birthDate  = birthDate;
+        this.deathDate  = deathDate;
         this.signupDate = signupDate;
-        this.clientID = clientID;
+        this.clientID   = clientID;
     }
 
     /**
@@ -73,25 +74,26 @@ class BankClient
                                   final Date signupDate,
                                   final String clientID)
     {
+        Main.validateString(clientID);
+
+        if (clientID.length() < MIN_CLIENT_ID_LENGTH || clientID.length() > MAX_CLIENT_ID_LENGTH)
+        {
+            throw new IllegalArgumentException("Client ID must be 6 or 7 characters");
+        }
+
         if (name == null)
         {
             throw new IllegalArgumentException("Name cannot be null");
         }
+
         if (birthDate == null)
         {
             throw new IllegalArgumentException("Birth date cannot be null");
         }
+
         if (signupDate == null)
         {
             throw new IllegalArgumentException("Signup date cannot be null");
-        }
-        if (clientID == null || clientID.isBlank())
-        {
-            throw new IllegalArgumentException("Client ID cannot be null or blank");
-        }
-        if (clientID.length() < MIN_CLIENT_ID_LENGTH || clientID.length() > MAX_CLIENT_ID_LENGTH)
-        {
-            throw new IllegalArgumentException("Client ID must be 6 or 7 characters");
         }
     }
 
@@ -158,19 +160,19 @@ class BankClient
      */
     public String getDetails()
     {
-        String signupDay;
-        String signupMonth;
-        String signupFormatted;
-        String status;
+        final String signupDay;
+        final String signupMonth;
+        final String signupFormatted;
+        final String status;
+        final String detailsFormatted;
 
-        signupDay = signupDate.getDayOfTheWeek().toLowerCase();
-        signupMonth = signupDate.getMonthName().toLowerCase();
+        signupDay       = signupDate.getDayOfTheWeek().toLowerCase();
+        signupMonth     = signupDate.getMonthName().toLowerCase();
         signupFormatted = String.format("%s, %s %d,%d",
-                signupDay,
-                signupMonth,
-                signupDate.getDay(),
-                signupDate.getYear()
-        );
+                                        signupDay,
+                                        signupMonth,
+                                        signupDate.getDay(),
+                                        signupDate.getYear());
 
         if (deathDate == null)
         {
@@ -181,11 +183,13 @@ class BankClient
             status = DEAD_STRING;
         }
 
-        return String.format("%s client #%s (%s) joined the bank on %s",
-                name.getFullName(),
-                clientID,
-                status,
-                signupFormatted
-        );
+
+        detailsFormatted = String.format("%s client #%s (%s) joined the bank on %s",
+                                         name.getFullName(),
+                                         clientID,
+                                         status,
+                                         signupFormatted);
+
+        return detailsFormatted;
     }
 }

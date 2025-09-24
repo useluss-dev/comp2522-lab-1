@@ -17,8 +17,15 @@ package ca.bcit.comp2522.bank;
  */
 public class Name
 {
-    static final int MAX_NAME_LENGTH = 45;
-    static final String ILLEGAL_SUBSTRING = "admin";
+    // --- Name Requirement Constants ---
+    private static final int    MAX_NAME_LENGTH   = 99;
+    private static final String ILLEGAL_SUBSTRING = "bcit";
+
+    // --- Substring Constants ---
+    private static final int FIRST_CHAR_INDEX  = 0;
+    private static final int SECOND_CHAR_INDEX = 1;
+    private static final int AFTER_FIRST_CHAR  = 1;
+
     private final String firstName;
     private final String lastName;
 
@@ -27,7 +34,6 @@ public class Name
      *
      * @param firstName the first name
      * @param lastName  the last name
-     * @throws IllegalArgumentException if validation fails for either name
      */
     public Name(final String firstName,
                 final String lastName)
@@ -36,7 +42,7 @@ public class Name
         validateName(lastName);
 
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.lastName  = lastName;
     }
 
     /**
@@ -94,9 +100,9 @@ public class Name
 
         builder = new StringBuilder();
 
-        builder.append(firstName.toUpperCase().charAt(0));
+        builder.append(firstName.toUpperCase().charAt(FIRST_CHAR_INDEX));
         builder.append(".");
-        builder.append(lastName.toUpperCase().charAt(0));
+        builder.append(lastName.toUpperCase().charAt(FIRST_CHAR_INDEX));
         builder.append(".");
 
         initials = builder.toString();
@@ -142,6 +148,8 @@ public class Name
      */
     private static void validateName(final String name)
     {
+        final String lowercaseName;
+
         Main.validateString(name);
 
         if (name.length() > MAX_NAME_LENGTH)
@@ -149,7 +157,6 @@ public class Name
             throw new IllegalArgumentException("Name exceeds maximum length of " + MAX_NAME_LENGTH);
         }
 
-        String lowercaseName;
         lowercaseName = name.toLowerCase();
 
         if (lowercaseName.contains(ILLEGAL_SUBSTRING.toLowerCase()))
@@ -167,6 +174,16 @@ public class Name
      */
     private static String capitalize(final String str)
     {
-        return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
+        final StringBuilder builder;
+        final String capitalized;
+
+        builder = new StringBuilder();
+
+        builder.append(str.substring(FIRST_CHAR_INDEX, SECOND_CHAR_INDEX).toUpperCase());
+        builder.append(str.substring(AFTER_FIRST_CHAR).toLowerCase());
+
+        capitalized = builder.toString();
+
+        return capitalized;
     }
 }

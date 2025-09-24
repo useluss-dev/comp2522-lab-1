@@ -20,10 +20,12 @@ public class Main
         Date einsteinSignup = new Date(1900, 1, 1);
         Date einsteinAccountClosed = new Date(1950, 10, 14);
 
-        BankClient einsteinClient = new BankClient(einsteinName, einsteinBirth, einsteinDeath, einsteinSignup, "abc123");
+        BankClient einsteinClient = new BankClient(einsteinName, einsteinBirth, einsteinDeath, einsteinSignup,
+                                                   "abc123");
         System.out.println(einsteinClient.getDetails());
 
-        BankAccount einsteinAccount = new BankAccount(einsteinClient, "abc123", einsteinSignup, einsteinAccountClosed, 1000, 3141);
+        BankAccount einsteinAccount = new BankAccount(einsteinClient, "abc123", einsteinSignup, einsteinAccountClosed
+            , 1000, 3141);
 
 //        try {
 //            einsteinAccount.withdraw(100);
